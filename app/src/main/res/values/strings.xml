@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Income Tax Calculator</string>
+    <string name="filing_label_single">Single</string>
+    <string name="filing_label_married_jointly">Married, Filing Jointly</string>
+    <string name="filing_label_married_seperately">Married, Filing Seperately</string>
+    <string name="filing_label_head_of_household">Head of Household</string>
+    <string name="label_income">Total Income</string>
+    <string name="label_rate">Tax Rate</string>
+    <string name="label_amount">Amount of Federal Tax</string>
+    <string name="label_compute">Calculate Tax</string>
 </resources>
