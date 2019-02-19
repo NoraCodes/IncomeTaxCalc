@@ -2,20 +2,20 @@ package code.toastywolf.incometaxcalc;
 
 public class TaxCalculator {
     public static double rate(TaxInformation ti) {
-        if (ti.filing_as == TaxInformation.FILING_SINGLE) {
-            return getSingleRate(ti.income);
+        if (ti.getFiling_as() == TaxInformation.FILING_SINGLE) {
+            return getSingleRate(ti.getIncome());
         }
 
-        if (ti.filing_as == TaxInformation.FILING_JOINTLY) {
-            return getJointRate(ti.income);
+        if (ti.getFiling_as() == TaxInformation.FILING_JOINTLY) {
+            return getJointRate(ti.getIncome());
         }
 
-        if (ti.filing_as == TaxInformation.FILING_HEAD_OF_HOUSEHOLD) {
-            return getHeadOfHouseholdRate(ti.income);
+        if (ti.getFiling_as() == TaxInformation.FILING_HEAD_OF_HOUSEHOLD) {
+            return getHeadOfHouseholdRate(ti.getIncome());
         }
 
-        if (ti.filing_as == TaxInformation.FILING_SEPERATELY) {
-            return getSeperateRate(ti.income);
+        if (ti.getFiling_as() == TaxInformation.FILING_SEPERATELY) {
+            return getSeperateRate(ti.getIncome());
         }
 
         return Float.NaN;
@@ -23,7 +23,7 @@ public class TaxCalculator {
 
     public static double amount(TaxInformation ti) {
         double rate = rate(ti);
-        return ti.income * rate;
+        return ti.getIncome() * rate;
     }
 
     private static double getSingleRate(double income) {
