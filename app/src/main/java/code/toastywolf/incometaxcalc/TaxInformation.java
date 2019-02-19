@@ -15,6 +15,7 @@ public class TaxInformation {
     public TaxInformation(double income, int filing_as) {
         this.setIncome(income);
         this.setFiling_as(filing_as);
+        this.update();
     }
 
     public double getIncome() {

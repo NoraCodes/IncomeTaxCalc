@@ -26,10 +26,38 @@ public class MainActivity extends AppCompatActivity {
         this.rateView = findViewById(R.id.rateView);
         this.amountView = findViewById(R.id.amountView);
 
-        this.model = new TaxInformation(11000, TaxInformation.FILING_SINGLE);
+        if (savedInstanceState != null) {
+            // Get the saved state
+            int filing_as = savedInstanceState.getInt("filing_as");
+            double income = savedInstanceState.getFloat("income");
 
-        this.setModelFilingMode();
-        this.setModelIncome();
+            // Restore it to the UI
+            this.incomeEditText.setText(String.format("%.2f", income));
+            if (filing_as == TaxInformation.FILING_HEAD_OF_HOUSEHOLD ) {
+                this.filingSelector.check(R.id.filingHeadOfHousehold);
+            } else if (filing_as == TaxInformation.FILING_JOINTLY) {
+                this.filingSelector.check(R.id.filingMarriedJointly);
+            } else if (filing_as == TaxInformation.FILING_SEPERATELY) {
+                this.filingSelector.check(R.id.filingMarriedSeperately);
+            } else {
+                this.filingSelector.check(R.id.filingSingle);
+            }
+
+            // Update the model
+            this.model = new TaxInformation(income, filing_as);
+        } else {
+            this.model = new TaxInformation(11000, TaxInformation.FILING_SINGLE);
+            this.setModelFilingMode();
+            this.setModelIncome();
+        }
+
+        this.calculate(null);
+    }
+
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putFloat("income", (float) model.getIncome());
+        outState.putInt("filing_as", model.getFiling_as());
     }
 
     private boolean amountParsesAsFloat() {
