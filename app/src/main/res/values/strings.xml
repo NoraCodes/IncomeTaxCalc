@@ -5,7 +5,7 @@
     <string name="filing_label_married_seperately">Married, Filing Seperately</string>
     <string name="filing_label_head_of_household">Head of Household</string>
     <string name="label_income">Total Income</string>
-    <string name="label_rate">Tax Rate</string>
+    <string name="label_rate">Maximum Bracket Rate</string>
     <string name="label_amount">Amount of Federal Tax</string>
     <string name="label_compute">Calculate Tax</string>
 </resources>
